@@ -11,6 +11,7 @@ public class FollowPlayer2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initially set main camera to active, other camera to inactive
         mainCameraP2.SetActive(true);
         otherCameraP2.SetActive(false);
     }
@@ -18,18 +19,13 @@ public class FollowPlayer2 : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        // Right Shift button press inverts activity of both cameras for P2
         if (Input.GetButtonDown("RightShift"))
         {
             mainCameraP2.SetActive(!mainCameraP2.activeSelf);
             otherCameraP2.SetActive(!otherCameraP2.activeSelf);
         }
-        if(mainCameraP2.activeSelf)
-        {
-            transform.position = player2.transform.position;
-        }
-        if (otherCameraP2.activeSelf)
-        {
-            transform.position = player2.transform.position;
-        }
+        // Track P2 position
+        transform.position = player2.transform.position;
     }
 }

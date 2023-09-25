@@ -15,6 +15,7 @@ public class OncomingVehicle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Oncoming vehicle moves in a straight direction
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }
