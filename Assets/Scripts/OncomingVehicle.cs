@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+public class OncomingVehicle : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 offset = new Vector3(0, 6, -8);
+    public float speed = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -14,8 +13,8 @@ public class FollowPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-        transform.position = player.transform.position + offset;
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }
