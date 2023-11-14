@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerControllerP2 : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerControllerP2 : MonoBehaviour
     private Rigidbody player2Rb;
     [SerializeField] GameObject centerOfMass;
 
+    [SerializeField] TextMeshProUGUI speedometerText;
+    [SerializeField] float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,10 @@ public class PlayerControllerP2 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        speed = Mathf.Round(player2Rb.velocity.magnitude * 2.237f);
+        speedometerText.SetText("Speed: " + speed + "mph");
+
+
         horizontalInput = Input.GetAxis("HorizontalP2");
         forwardInput = Input.GetAxis("VerticalP2");
 
