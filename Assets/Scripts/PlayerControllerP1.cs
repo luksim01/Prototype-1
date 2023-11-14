@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI rpmText;
     [SerializeField] float rpm;
 
+    [SerializeField] List<WheelCollider> allWheels;
+    [SerializeField] int wheelsOnGround;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,19 +32,42 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        speed = Mathf.Round(player1Rb.velocity.magnitude * 2.237f);
-        speedometerText.SetText("Speed: " + speed + "mph");
+        if (IsOnGround())
+        {
+            speed = Mathf.Round(player1Rb.velocity.magnitude * 2.237f);
+            speedometerText.SetText("Speed: " + speed + "mph");
 
-        rpm = Mathf.Round((speed % 30) * 40);
-        rpmText.SetText("RPM: " + rpm);
+            rpm = Mathf.Round((speed % 30) * 40);
+            rpmText.SetText("RPM: " + rpm);
 
-        horizontalInput = Input.GetAxis("HorizontalP1");
-        forwardInput = Input.GetAxis("VerticalP1");
+            horizontalInput = Input.GetAxis("HorizontalP1");
+            forwardInput = Input.GetAxis("VerticalP1");
 
-        // Moves the vehicle forward based on vertical input
-        //transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        player1Rb.AddRelativeForce(Vector3.forward * horsePower * forwardInput);
-        // Rotates the vehicle based on horizontal input
-        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+            // Moves the vehicle forward based on vertical input
+            //transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+            player1Rb.AddRelativeForce(Vector3.forward * horsePower * forwardInput);
+            // Rotates the vehicle based on horizontal input
+            transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+        }
+    }
+
+    bool IsOnGround()
+    {
+        wheelsOnGround = 0;
+        foreach (WheelCollider wheel in allWheels)
+        {
+            if (wheel.isGrounded)
+            {
+                wheelsOnGround++;
+            }
+        }
+        if (wheelsOnGround == 4)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

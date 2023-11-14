@@ -810,7 +810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &174704167
 Transform:
   m_ObjectHideFlags: 0
@@ -4303,6 +4303,12 @@ MonoBehaviour:
   speed: 0
   rpmText: {fileID: 1723356449}
   rpm: 0
+  allWheels:
+  - {fileID: 951992334}
+  - {fileID: 1805356474}
+  - {fileID: 1937442831}
+  - {fileID: 1353479485}
+  wheelsOnGround: 0
 --- !u!4 &1085493345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 436868, guid: 70bf34f6c25c948458f254e87188b00b, type: 3}
@@ -4361,6 +4367,12 @@ MonoBehaviour:
   speed: 0
   rpmText: {fileID: 1802933038}
   rpm: 0
+  allWheels:
+  - {fileID: 927364341}
+  - {fileID: 1124270693}
+  - {fileID: 1328220734}
+  - {fileID: 137934452}
+  wheelsOnGround: 0
 --- !u!4 &1114175744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 428284, guid: 09082afec7b5e824ca611a0cc3264bcd, type: 3}
