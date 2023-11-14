@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public float rotationSpeed = 6.0f;
+    public float rotationSpeed = 7.0f;
 
     // Start is called before the first frame update
     void Start()
