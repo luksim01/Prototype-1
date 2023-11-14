@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI speedometerText;
     [SerializeField] float speed;
 
+    [SerializeField] TextMeshProUGUI rpmText;
+    [SerializeField] float rpm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,8 @@ public class PlayerController : MonoBehaviour
         speed = Mathf.Round(player1Rb.velocity.magnitude * 2.237f);
         speedometerText.SetText("Speed: " + speed + "mph");
 
+        rpm = Mathf.Round((speed % 30) * 40);
+        rpmText.SetText("RPM: " + rpm);
 
         horizontalInput = Input.GetAxis("HorizontalP1");
         forwardInput = Input.GetAxis("VerticalP1");
